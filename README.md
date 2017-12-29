@@ -1,5 +1,6 @@
 # Cube_Wave
 Cube Wave by Bees and Bombs
+The file in playground/playground.cpp is the one I created for this coding challenge.
 ![Cube Wave logo](https://lugsole.github.io/Cube_Wave/picture.png)
 ## Usage
 The escape button closes the full screen window
