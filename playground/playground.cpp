@@ -12,10 +12,10 @@ using namespace std; // Including the C++ Standard Library.
 
 
 
-
+/* rough calculation of pi */
 double M_PI = 3.1415926;
 /*Ripple*/
-float function1(float x, float y, float s)
+float Math_Formula(float x, float y, float s)
 {
 	return sin(sqrt(x * x + y * y) * M_PI * 2 + s * -M_PI) / 4 + .5;
 }
@@ -39,13 +39,9 @@ static void cursor_position_callback(GLFWwindow *window, double xpos, double ypo
 		<< "Mouse Position: (" << xpos << "," << ypos << ")" << endl;
 }
 
-float function(float x, float y)
-{
-	return sin(sqrt(x * x + y * y) * M_PI * 2 + glfwGetTime() * -M_PI / 4);
-}
-
 int main(void)
 {
+	/* create a window*/
 	GLFWwindow *window;
 	glfwSetErrorCallback(error_callback);
 	if (!glfwInit())
@@ -63,35 +59,34 @@ int main(void)
 		exit(EXIT_FAILURE);
 	}
 
-	/*  */
+	/* Tell computer we are going to draw on this window */
 	glfwMakeContextCurrent(window);
 
 	/* Tell where to send key events */
 	glfwSetKeyCallback(window, key_callback);
 
+	/* Tell where to send mouse events */
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 
-	/* Make cursor hidden */
+	/* Make mouse hidden */
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
 	/* define the projection transformation */
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	float scale_w = ((float)WIDTH / HEIGHT);
+	/* scale window */
 	glOrtho(-scale_w * 1.1, scale_w * 1.1, -1.0 * 1.1, 1.0 * 1.1, -2.0, 20.0);
 
 	/* define the viewing transformation */
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	/* look at the center */
 	gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
 	/* Set the graph scale */
 	float increment = .1;
 	double last_time = 0;
-
-	/* Create hexagon */
-	float Pos_X = 1;
-	float Pos_Y = 1;
 	float* list;
 	while (!glfwWindowShouldClose(window))
 	{
@@ -127,11 +122,12 @@ int main(void)
 		/* Change color to wight */
 		glColor3f(1.f, 1.f, 1.f);
 		glEnd();
+		/* Time to start drawing triangles */
 		glBegin(GL_TRIANGLES);
 		for (float x = -1; x < 1; x += increment)
 			for (float y = -1; y < 1; y += increment) {
 				float H_I = increment / 2;
-				float z = function1(x + H_I, y + H_I, now);
+				float z = Math_Formula(x + H_I, y + H_I, now);
 				/* set color */
 				glColor4f(.5, .733, .70, 1);
 				/* draw triangle */
