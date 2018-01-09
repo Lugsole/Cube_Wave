@@ -1,12 +1,21 @@
+/* Author: Lugsole
+ * Heading with dome comments
+ * This is my C++ implementation of "The Cube Wave"
+ * Objective: Recreate the animation from https://twitter.com/beesandbombs/status/940639806522085376
+ * 
+ *
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <iostream>
 #include <GL/glew.h>
 #include <glfw3.h>
+#include <glm/glm.hpp>
+
 GLFWwindow* window;
 
-#include <glm/glm.hpp>
 using namespace glm;
 using namespace std; // Including the C++ Standard Library.
 
@@ -29,7 +38,7 @@ int function_num = 1;
 
 static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	//if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
 }
 
@@ -86,6 +95,7 @@ int main(void)
 
 	/* Set the graph scale */
 	float increment = .1;
+	increment = 1 / (13. / 2);
 	double last_time = 0;
 	float* list;
 	while (!glfwWindowShouldClose(window))
@@ -124,8 +134,8 @@ int main(void)
 		glEnd();
 		/* Time to start drawing triangles */
 		glBegin(GL_TRIANGLES);
-		for (float x = -1; x < 1; x += increment)
-			for (float y = -1; y < 1; y += increment) {
+		for (float x = -1; x + increment < 1; x += increment)
+			for (float y = -1; y + increment < 1; y += increment) {
 				float H_I = increment / 2;
 				float z = Math_Formula(x + H_I, y + H_I, now);
 				/* set color */
@@ -185,7 +195,9 @@ int main(void)
 		cout << 1 / (now - last_time) << ",";
 		last_time = now;
 	}
+	/* Close the window */
 	glfwDestroyWindow(window);
 	glfwTerminate();
+	/* Tell computer there was a  successful close */
 	exit(EXIT_SUCCESS);
 }

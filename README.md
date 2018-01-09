@@ -7,6 +7,7 @@ The escape button closes the full screen window
 ## Credits
 This code's base was taken from: [opengl-tutorial](http://www.opengl-tutorial.org/)
 If my compiling instructions don't make sense, try [Link](http://www.opengl-tutorial.org/beginners-tutorials/tutorial-1-opening-a-window/)
+This origional version of what i was receating: [Link](https://twitter.com/beesandbombs/status/940639806522085376)
 ## Download
 None for now
 ## compile/run
