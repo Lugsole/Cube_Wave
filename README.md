@@ -19,12 +19,16 @@ None for now
 5. select the down arrow next to current document and select "playground.exe"
 ### Linux
 command line instructions once downloaded and in project directory
-1. mkdir build
-2. cd build
-3. cmake ..
-4. make all
-5. Projects/OpenGLTutorials/
-6. ./playground
+
+Debain 10 dependencies 
+```
+sudo apt install cmake make g++ libx11-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxrandr-dev libxext-dev libxcursor-dev libxinerama-dev libxi-dev
+```
+1. `mkdir build`
+2. `cd build`
+3. `cmake ..`
+4. `make all -j$(nproc)`
+5. `./playground`
 ### Mac
 My best guess is to fallow this: [Link](http://www.opengl-tutorial.org/beginners-tutorials/tutorial-1-opening-a-window/)
 ## Video
